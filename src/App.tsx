@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Sample from './Sample';
 
-function App() {
+interface AppProps {}
+
+const App: React.FunctionComponent<AppProps> = () => {
+  const parentHandler = (message: string): void => {
+    console.log('Received', message);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='p-5'>
+        <h2>React with TypeScript</h2>
+        <hr />
+        <Sample
+          message='Hello, world!'
+          year={2023}
+          person={{
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john@gmail.com',
+          }}
+          onSend={parentHandler}
+        />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
